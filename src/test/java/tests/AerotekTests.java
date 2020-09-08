@@ -4,9 +4,9 @@ import com.codeborne.selenide.Selectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AerotekTests extends TestBase {
     @Test
@@ -40,6 +40,15 @@ public class AerotekTests extends TestBase {
         open("https://www.aerotek.com/en/");
         $(Selectors.byTitle("Read Tony's Story")).click();
         $(".score-document-header").shouldHave(text("Tony Layne, Electromechanical Assembler"));
+    }
+
+    @Test
+    @DisplayName("About Us page successfully opens")
+    public void ourValueConsistsThreeItemsTest() {
+        open("https://www.aerotek.com/en/");
+        if($(".optanon-alert-box-button.optanon-button-allow").exists()) { $(".optanon-alert-box-button.optanon-button-allow").click(); }
+        $(Selectors.byText("About Us")).click();
+        $$(".score-highlight.slick-slide").shouldHave(size(3));
     }
 }
 
