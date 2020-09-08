@@ -43,7 +43,7 @@ public class AerotekTests extends TestBase {
     }
 
     @Test
-    @DisplayName("About Us page successfully opens")
+    @DisplayName("Our Value consists 3 items")
     public void ourValueConsistsThreeItemsTest() {
         open("https://www.aerotek.com/en/");
         if($(".optanon-alert-box-button.optanon-button-allow").exists()) { $(".optanon-alert-box-button.optanon-button-allow").click(); }
